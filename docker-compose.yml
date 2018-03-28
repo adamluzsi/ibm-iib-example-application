@@ -1,0 +1,10 @@
+IIB:
+  image: ibmcom/iib
+  environment:
+    - LICENSE=accept
+    - NODENAME=MYNODE
+    - SERVERNAME=MYSERVER
+  ports:
+    - 4414:4414
+    - 7800:7800
+
