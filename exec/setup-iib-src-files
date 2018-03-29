@@ -1,0 +1,20 @@
+#!/bin/sh
+
+iib-configure-env
+
+IBM_IIB_DOWNLOAD_URL="http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/integration/$IIB_VERSION-IIB-LINUX64-DEVELOPER.tar.gz"
+EXPECTED_ARCHIVE_DIR_PATH="$IIB_SRC_DIR_PATH/iib-$IIB_VERSION"
+
+if [ ! -d "$IIB_SRC_DIR_PATH" ]; then
+	echo "creating ibm iib main src directory"
+	mkdir "$IIB_SRC_DIR_PATH"
+fi
+
+if [ ! -d "$EXPECTED_ARCHIVE_DIR_PATH" ]; then
+	echo "creating directory $EXPECTED_ARCHIVE_DIR_PATH"
+
+	echo "fetching source files"
+	curl --progress-bar "$IBM_IIB_DOWNLOAD_URL" | tar --directory "$IIB_SRC_DIR_PATH" --extract --gunzip
+fi
+
+"$EXPECTED_ARCHIVE_DIR_PATH"/iib accept license silently

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+shopt -s nullglob
+
+for f in $(find . -name '*.bar'); do
+	echo "Deploying $f ..."
+	mqsideploy $IIB_NODE_NAME -e $IIB_SERVER_NAME -a $f -w 120
+done

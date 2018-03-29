@@ -1,0 +1,10 @@
+#!/bin/sh
+
+iib-configure-env
+
+containerName="$1"
+if [ "$containerName" = "" ]; then
+	containerName="ibmiibexampleapplication_IIB_1"
+fi
+
+docker exec --interactive --tty "$containerName" /bin/bash --rcfile "/opt/ibm/iib-$IIB_VERSION/server/bin/mqsiprofile"
