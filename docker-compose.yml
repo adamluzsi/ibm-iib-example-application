@@ -1,21 +1,24 @@
-IIB:
-  image: ibmcom/iib:${IIB_VERSION}
-  environment:
-    - LANG
-    - LICENSE
-    - NODENAME=${IIB_NODE_NAME}
-    - SERVERNAME=${IIB_SERVER_NAME}
-  ports:
-    - 7800:7800
-    - 4414:4414
+version: "3.3"
 
-MQ:
-  image: ibmcom/mq:8
-  environment:
-    - LANG
-    - LICENSE
-    - LOG_FORMAT=json
-    - MQ_QMGR_NAME=${MQ_QMGR_NAME}
-  ports:
-    - 1414:1414
+services:
+  IIB:
+    image: ibmcom/iib:${IIB_VERSION}
+    environment:
+      - LANG
+      - LICENSE
+      - NODENAME=${IIB_NODE_NAME}
+      - SERVERNAME=${IIB_SERVER_NAME}
+    ports:
+      - 7800:7800
+      - 4414:4414
+      - 4415:4415
 
+  MQ:
+    image: ibmcom/mq:8
+    environment:
+      - LANG
+      - LICENSE
+      - LOG_FORMAT=json
+      - MQ_QMGR_NAME=${MQ_QMGR_NAME}
+    ports:
+      - 1414:1414
