@@ -14,8 +14,8 @@ MQ:
   environment:
     - LANG
     - LICENSE
-    - MQ_QMGR_NAME=${MQ_QMGR_NAME}
     - LOG_FORMAT=json
+    - MQ_QMGR_NAME=${MQ_QMGR_NAME}
   ports:
     - 1414:1414
 
